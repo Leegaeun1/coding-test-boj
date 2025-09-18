@@ -1,21 +1,21 @@
-from queue import PriorityQueue
+import heapq
 import sys
 input = sys.stdin.readline
 n = int(input())
 li = []
-room = PriorityQueue()
+room = []
 
 for i in range(n):
     li.append(list(map(int,input().split())))
 
 li.sort(key= lambda x:[x[0],x[1]])
-room.put(li[0][1])
+heapq.heappush(room,li[0][1])
 
 for i in range(1,n):
-    e = room.get()
+    e = heapq.heappop(room)
     if e <= li[i][0]:
-        room.put(li[i][1])
+        heapq.heappush(room,li[i][1])
     else:
-        room.put(li[i][1])
-        room.put(e)
-print(room.qsize())
+        heapq.heappush(room,li[i][1])
+        heapq.heappush(room,e)
+print(len(room))
