@@ -6,8 +6,8 @@ n, m , v = map(int,input().split())
 graph = [[] for _ in range(n+1)]
 visited_dfs = [False] * (n+1)
 visited_bfs = [False] * (n+1)
-res_dfs = []
-res_bfs = []
+res_dfs = [v]
+res_bfs = [v]
 
 for _ in range(m):
     x, y =map(int,input().split())
@@ -19,17 +19,17 @@ for i in range(n+1):
 
 def dfs(v):
     visited_dfs[v]=True
-    res_dfs.append(v)
     for i in graph[v]:
         if not visited_dfs[i]:
+            res_dfs.append(i)
             dfs(i)
 
 def bfs(graph, v):
     queue = deque([v])
-    visited_bfs[v] = True
-    res_bfs.append(v)
+    
     while queue:
         x = queue.popleft()
+        visited_bfs[x] = True
         for i in graph[x]:
             if not visited_bfs[i]:
                 queue.append(i)
