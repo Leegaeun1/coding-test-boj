@@ -1,14 +1,7 @@
 from collections import deque
-board = []
+board = [list(input()) for _ in range(12)]
 puyo = []
 direct = [(0,1),(0,-1),(1,0),(-1,0)]
-
-for i in range(12):
-    tmp = list(input())
-    for j in range(6):
-        if tmp[j] != '.':
-            puyo.append([i,j])
-    board.append(tmp)
 
 def bfs(r,c,visited):
     queue = deque([(r,c)])
