@@ -14,7 +14,6 @@ def solution(n, costs):
         if len(dic[i]) > 0: # 개수가 0이아닌 처음
             stand = i
             li[i] = 0
-            visited[i] = True
             break
     
     for _ in range(n):
