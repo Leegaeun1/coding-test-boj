@@ -22,7 +22,7 @@ def solution(n, roads, sources, destination):
                 if not visited[i-1]:
                     queue.append(i-1)
                     visited[i-1] = True
-                    answer[i-1] = min(answer[i-1],answer[v]+1)
+                    answer[i-1] = answer[v] + 1
 
     bfs(graph,destination)
     for s in sources:
